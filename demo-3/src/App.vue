@@ -1,28 +1,38 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <h1>App 根组件</h1>
+    <button @click="btnGetBooks">获取图书列表的数据</button>
+
+    <hr/>
+
+    <div class="box">
+      <Left></Left>
+      <Right></Right>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Left from '@/components/Left-com.vue'
+import Right from '@/components/Right-com.vue'
 
 export default {
-  name: 'App',
+  methods: {
+    // 点击按钮，获取图书列表的数据
+    async btnGetBooks () {
+      const { data: res } = await this.$http.get('/api/getbooks')
+      console.log(res)
+    }
+  },
   components: {
-    HelloWorld
+    Left,
+    Right
   }
 }
 </script>
 
-<style lang="less">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="less" scoped>
+  .box {
+    display: flex;
+  }
 </style>

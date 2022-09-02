@@ -1,0 +1,22 @@
+import Vue from 'vue'
+import App from './App.vue'
+// 1. 导入路由模块，目的：拿到路由的实例对象
+// import routerObj from '@/router/index.js'
+import router from '@/router/index.js'
+
+// 导入 bootstrap 样式
+import 'bootstrap/dist/css/bootstrap.min.css'
+// 全局样式
+import '@/assets/global.css'
+
+Vue.config.productionTip = false
+
+new Vue({
+  render: h => h(App),
+  // 在 Vue 项目中，要想把路由用起来，必须把路由示例对象，通过下面的方式进行挂载
+  // router: 路由的实例对象
+  // router: routerObj
+
+  // router: router // 下面是简写格式
+  router
+}).$mount('#app')
