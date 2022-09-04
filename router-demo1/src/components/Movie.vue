@@ -1,12 +1,18 @@
 <template>
   <div class="movie-container">
-    <h3>Movie 组件</h3>
+    <h3>Movie 组件 --- {{ this.$route.params.mid }}</h3>
+    <button @click="showThis">打印 this</button>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Movie'
+  name: 'Movie',
+  methods: {
+    showThis() {
+      console.log(this)
+    }
+  }
 }
 </script>
 
